@@ -117,20 +117,18 @@ class Posts extends React.Component {
   render() {
     return (
       <div>
+        {this.state.posts.map(post => {
+          const { title, content, author, createdAt } = post;
+          return (
+            <Post
+              title={title}
+              content={content}
+              author={author}
+              createdAt={createdAt}
+            />
+          );
+        })}
         <Switch>
-          {this.state.posts.map(post => {
-            const { title, content, author, createdAt } = post;
-            return (
-              <Route exact path="/feed/posts">
-                <Post
-                  title={title}
-                  content={content}
-                  author={author}
-                  createdAt={createdAt}
-                />
-              </Route>
-            );
-          })}
           <Route exact path="/feed/create-post">
             <CreatePost createNewPost={this.finishEditHandler} />
           </Route>

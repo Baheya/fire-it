@@ -39,6 +39,7 @@ class Posts extends React.Component {
         return res.json();
       })
       .then(resData => {
+        console.log(resData);
         this.setState({
           posts: resData.posts
           //   totalPosts: resData.totalItems,
@@ -76,16 +77,16 @@ class Posts extends React.Component {
         return res.json();
       })
       .then(resData => {
-        console.log(resData);
         const post = {
           _id: resData.post._id,
           title: resData.post.title,
           content: resData.post.content,
-          creator: resData.post.creator,
+          creator: resData.post.author,
           createdAt: resData.post.createdAt
         };
+        console.log(post);
         this.setState(prevState => {
-          let updatedPosts = [...prevState.posts];
+          let updatedPosts = [...prevState.posts, post];
           //   if (prevState.editPost) {
           //     const postIndex = prevState.posts.findIndex(
           //       p => p._id === prevState.editPost._id
@@ -116,10 +117,10 @@ class Posts extends React.Component {
   render() {
     return (
       <div>
-        {this.state.posts.map(post => {
-          const { title, content, author, createdAt } = post;
-          return (
-            <Switch>
+        <Switch>
+          {this.state.posts.map(post => {
+            const { title, content, author, createdAt } = post;
+            return (
               <Route exact path="/feed/posts">
                 <Post
                   title={title}
@@ -128,12 +129,12 @@ class Posts extends React.Component {
                   createdAt={createdAt}
                 />
               </Route>
-              <Route exact path="/feed/create-post">
-                <CreatePost createNewPost={this.finishEditHandler} />
-              </Route>
-            </Switch>
-          );
-        })}
+            );
+          })}
+          <Route exact path="/feed/create-post">
+            <CreatePost createNewPost={this.finishEditHandler} />
+          </Route>
+        </Switch>
       </div>
     );
   }

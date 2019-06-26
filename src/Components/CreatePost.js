@@ -81,7 +81,7 @@ class CreatePost extends React.Component {
           />
           <FilePicker
             id="image"
-            label="image"
+            label="Image"
             control="input"
             onChange={this.postInputChangeHandler}
           />

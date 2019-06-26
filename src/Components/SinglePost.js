@@ -31,7 +31,7 @@ class SinglePost extends React.Component {
         this.setState({
           title: res.data.post.title,
           author: res.data.post.author.name,
-          image: 'http://localhost8080/' + res.data.post.imageUrl,
+          image: 'http://localhost:8080/' + res.data.post.imageUrl,
           date: new Date(res.data.post.createdAt).toLocaleDateString(),
           content: res.data.post.content,
           id: res.data.post._id

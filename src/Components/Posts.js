@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from './Post';
 import CreatePost from './CreatePost';
-import SinglePost from './SinglePost'
+import SinglePost from './SinglePost';
 import { Route, Switch } from 'react-router-dom';
 
 class Posts extends React.Component {
@@ -54,7 +54,10 @@ class Posts extends React.Component {
     //   this.setState({
     //     editLoading: true
     //   });
-    // Set up data (with image!)
+    const formData = new FormData();
+    formData.append('title', postData.title);
+    formData.append('content', postData.content);
+    formData.append('image', postData.image);
     let url = 'http://localhost:8080/feed/create-post';
     let method = 'POST';
     //   if (this.state.editPost) {
@@ -63,13 +66,7 @@ class Posts extends React.Component {
 
     fetch(url, {
       method: method,
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        title: postData.title,
-        content: postData.content
-      })
+      body: formData
     })
       .then(res => {
         if (res.status !== 200 && res.status !== 201) {
@@ -121,7 +118,7 @@ class Posts extends React.Component {
         <Switch>
           <Route exact path="/feed/posts">
             {this.state.posts.map(post => {
-              const { title, content, author, createdAt, _id } = post;
+              const { title, content, author, createdAt, _id, imageUrl } = post;
               return (
                 <Post
                   title={title}
@@ -129,6 +126,8 @@ class Posts extends React.Component {
                   author={author}
                   createdAt={createdAt}
                   id={_id}
+                  key={_id}
+                  image={imageUrl}
                 />
               );
             })}

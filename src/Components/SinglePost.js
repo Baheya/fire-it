@@ -7,7 +7,7 @@ class SinglePost extends React.Component {
     title: '',
     author: '',
     date: '',
-    // image: '',
+    image: '',
     content: '',
     id: ''
   };
@@ -27,10 +27,11 @@ class SinglePost extends React.Component {
       //     return res.json();
       //   })
       .then(res => {
-        console.log(res.data);
+        console.log(res);
         this.setState({
           title: res.data.post.title,
           author: res.data.post.author.name,
+          image: 'http://localhost8080/' + res.data.post.imageUrl,
           date: new Date(res.data.post.createdAt).toLocaleDateString(),
           content: res.data.post.content,
           id: res.data.post._id
@@ -51,6 +52,7 @@ class SinglePost extends React.Component {
         <NavLink to={`/feed/post/${this.state.id}`}>
           <h1>{this.state.title}</h1>
         </NavLink>
+        <img src={this.state.image} />
         <p>{this.state.content}</p>
         <span>2 Comments</span>
         <span>4 Votes</span>

@@ -1,13 +1,17 @@
-import React from "react";
-import Input from "./Input";
-import Button from "./Button";
+import React from 'react';
+import Input from './Input';
+import FilePicker from './FilePicker';
+import Button from './Button';
 
 const POST_FORM = {
   title: {
-    value: ""
+    value: ''
+  },
+  image: {
+    value: ''
   },
   content: {
-    value: ""
+    value: ''
   }
 };
 
@@ -15,7 +19,7 @@ class CreatePost extends React.Component {
   state = {
     postForm: POST_FORM
   };
-  postInputChangeHandler = (input, value) => {
+  postInputChangeHandler = (input, value, files) => {
     // if (files) {
     //   generateBase64FromImage(files[0])
     //     .then(b64 => {
@@ -35,7 +39,7 @@ class CreatePost extends React.Component {
         [input]: {
           ...prevState.postForm[input],
           //   valid: isValid,
-          value: value
+          value: files ? files[0] : value
         }
       };
       //   let formIsValid = true;
@@ -52,7 +56,7 @@ class CreatePost extends React.Component {
     e.preventDefault();
     const post = {
       title: this.state.postForm.title.value,
-      // image: this.state.postForm.image.value,
+      image: this.state.postForm.image.value,
       content: this.state.postForm.content.value
     };
     this.props.createNewPost(post);
@@ -72,7 +76,13 @@ class CreatePost extends React.Component {
             type="text"
             name="title"
             control="input"
-            value={this.state.postForm["title"].value}
+            value={this.state.postForm['title'].value}
+            onChange={this.postInputChangeHandler}
+          />
+          <FilePicker
+            id="image"
+            label="image"
+            control="input"
             onChange={this.postInputChangeHandler}
           />
           <Input
@@ -82,7 +92,7 @@ class CreatePost extends React.Component {
             rows="5"
             name="content"
             control="textarea"
-            value={this.state.postForm["content"].value}
+            value={this.state.postForm['content'].value}
             onChange={this.postInputChangeHandler}
           />
           <Button onClick={this.acceptPostChangeHandler} />

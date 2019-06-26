@@ -1,6 +1,7 @@
 import React from 'react';
 import Post from './Post';
 import CreatePost from './CreatePost';
+import SinglePost from './SinglePost'
 import { Route, Switch } from 'react-router-dom';
 
 class Posts extends React.Component {
@@ -120,13 +121,14 @@ class Posts extends React.Component {
         <Switch>
           <Route exact path="/feed/posts">
             {this.state.posts.map(post => {
-              const { title, content, author, createdAt } = post;
+              const { title, content, author, createdAt, _id } = post;
               return (
                 <Post
                   title={title}
                   content={content}
                   author={author}
                   createdAt={createdAt}
+                  id={_id}
                 />
               );
             })}
@@ -136,6 +138,12 @@ class Posts extends React.Component {
           <Route exact path="/feed/create-post">
             <CreatePost createNewPost={this.finishEditHandler} />
           </Route>
+        </Switch>
+        <Switch>
+          <Route
+            path="/feed/post/:postId"
+            render={props => <SinglePost {...props} />}
+          />
         </Switch>
       </div>
     );

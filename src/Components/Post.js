@@ -5,7 +5,7 @@ const Post = props => {
     <div>
       <a href="#">r/category</a>
       <span>
-        Posted by {props.author.name} at {props.createdAt}
+        Posted by {props.name} at {props.createdAt}
       </span>
       <h1>{props.title}</h1>
       <p>{props.content}</p>

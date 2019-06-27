@@ -13,7 +13,7 @@ class Post extends React.Component {
           <h1>{this.props.title}</h1>
         </NavLink>
         <p>{this.props.content}</p>
-        <span>2 Comments</span>
+        <span>{this.props.comments.length} Comments</span>
         <span>4 Votes</span>
       </div>
     );

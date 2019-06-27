@@ -113,7 +113,15 @@ class Posts extends React.Component {
         <Switch>
           <Route exact path="/feed/posts">
             {this.state.posts.map(post => {
-              const { title, content, author, createdAt, _id, imageUrl } = post;
+              const {
+                title,
+                content,
+                author,
+                createdAt,
+                _id,
+                imageUrl,
+                comments
+              } = post;
               return (
                 <Post
                   title={title}
@@ -123,6 +131,7 @@ class Posts extends React.Component {
                   id={_id}
                   key={_id}
                   image={imageUrl}
+                  comments={comments}
                 />
               );
             })}

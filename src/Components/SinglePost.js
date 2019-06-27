@@ -135,7 +135,7 @@ class SinglePost extends React.Component {
           </NavLink>
           <img src={this.state.image} />
           <p>{this.state.content}</p>
-          <span>2 Comments</span>
+          <span>{this.state.comments.length} Comments</span>
           <span>4 Votes</span>
         </div>
         <Input

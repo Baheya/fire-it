@@ -51,7 +51,8 @@ class SinglePost extends React.Component {
           image: 'http://localhost:8080/' + res.data.post.imageUrl,
           date: new Date(res.data.post.createdAt).toLocaleDateString(),
           content: res.data.post.content,
-          id: res.data.post._id
+          id: res.data.post._id,
+          comments: res.data.post.comments
         }));
       })
       // .then(res => {
@@ -146,7 +147,7 @@ class SinglePost extends React.Component {
           onChange={this.commentChangeHandler}
         />
         <CreateComment addComment={this.addComment} />
-        <Comments />
+        <Comments comments={this.state.comments} />
       </div>
     );
   }

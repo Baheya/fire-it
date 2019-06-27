@@ -1,6 +1,6 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import Button from "./Button";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import Button from './Button';
 
 class CreatePostContainer extends React.Component {
   render() {
@@ -12,7 +12,7 @@ class CreatePostContainer extends React.Component {
           commented content on the internet.
         </p>
         <NavLink to="/feed/create-post">
-          <Button />
+          <Button label={'Create Post'} />
         </NavLink>
       </div>
     );

@@ -4,8 +4,8 @@ class Comment extends React.Component {
   render() {
     return (
       <div>
-        <p>Posted by User</p>
-        <p>Comment body here</p>
+        <p>Posted by {this.props.author.name}</p>
+        <p>{this.props.content}</p>
       </div>
     );
   }

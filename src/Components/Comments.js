@@ -7,8 +7,8 @@ class Comments extends React.Component {
     return (
       <div>
         {this.props.comments.map(comment => {
-          const { content, author } = comment;
-          return <Comment content={content} author={author} />;
+          const { content, author, _id } = comment;
+          return <Comment content={content} author={author} key={_id} />;
         })}
       </div>
     );

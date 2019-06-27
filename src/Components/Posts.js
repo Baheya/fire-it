@@ -120,7 +120,8 @@ class Posts extends React.Component {
                 createdAt,
                 _id,
                 imageUrl,
-                comments
+                comments,
+                votes
               } = post;
               return (
                 <Post
@@ -132,6 +133,7 @@ class Posts extends React.Component {
                   key={_id}
                   image={imageUrl}
                   comments={comments}
+                  votes={votes}
                 />
               );
             })}

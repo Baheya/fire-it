@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import Comments from './Comments';
 import CreateComment from './CreateComment';
 import Input from './Input';
+import Button from './Button';
 
 class SinglePost extends React.Component {
   state = {
@@ -15,7 +16,8 @@ class SinglePost extends React.Component {
     content: '',
     id: '',
     comment: '',
-    comments: []
+    comments: [],
+    votes: 0
   };
 
   componentDidMount() {
@@ -52,7 +54,8 @@ class SinglePost extends React.Component {
           date: new Date(res.data.post.createdAt).toLocaleDateString(),
           content: res.data.post.content,
           id: res.data.post._id,
-          comments: res.data.post.comments
+          comments: res.data.post.comments,
+          votes: res.data.post.votes
         }));
       })
       // .then(res => {
@@ -122,6 +125,46 @@ class SinglePost extends React.Component {
     });
   };
 
+  submitVote = () => {
+    const postId = this.props.match.params.postId;
+    const votes = this.state.votes;
+    console.log(postId, votes);
+    axios
+      .post('http://localhost:8080/feed/post/' + postId + '/voted', {
+        votes: votes,
+        postId: postId
+      })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  saveVote = e => {
+    e.preventDefault();
+    if (e.target.value === 'up') {
+      this.setState(
+        {
+          votes: this.state.votes + 1
+        },
+        () => {
+          this.submitVote();
+        }
+      );
+    } else if (e.target.value === 'down') {
+      this.setState(
+        {
+          votes: this.state.votes - 1
+        },
+        () => {
+          this.submitVote();
+        }
+      );
+    }
+  };
+
   render() {
     return (
       <div>
@@ -135,8 +178,10 @@ class SinglePost extends React.Component {
           </NavLink>
           <img src={this.state.image} />
           <p>{this.state.content}</p>
-          <span>{this.state.comments.length} Comments</span>
-          <span>4 Votes</span>
+          <p>{this.state.comments.length} Comments</p>
+          <Button onClick={this.saveVote} label="+" value="up" />
+          <p>{this.state.votes} Votes</p>
+          <Button onClick={this.saveVote} label="-" value="down" />
         </div>
         <Input
           id="content"

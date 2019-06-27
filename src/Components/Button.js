@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 const Button = props => {
   return (
     <div>
-      <button onClick={props.onClick}>Create Post</button>
+      <button onClick={props.onClick}>{props.label}</button>
     </div>
   );
 };

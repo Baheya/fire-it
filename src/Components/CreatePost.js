@@ -95,7 +95,10 @@ class CreatePost extends React.Component {
             value={this.state.postForm['content'].value}
             onChange={this.postInputChangeHandler}
           />
-          <Button onClick={this.acceptPostChangeHandler} />
+          <Button
+            onClick={this.acceptPostChangeHandler}
+            label={'Create Post'}
+          />
         </form>
       </div>
     );

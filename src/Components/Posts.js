@@ -6,13 +6,8 @@ import { Route, Switch } from 'react-router-dom';
 
 class Posts extends React.Component {
   state = {
-    posts: [],
+    posts: []
     // postsLoading: true,
-    post: {
-      author: '',
-      title: '',
-      category: ''
-    }
   };
 
   componentDidMount() {

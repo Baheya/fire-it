@@ -172,9 +172,9 @@ class SinglePost extends React.Component {
       <div>
         <div>
           <a href="#">{`r/${this.state.category}`}</a>
-          <span>
-            Posted by {this.state.author} at {this.state.createdAt}
-          </span>
+          <p>
+            Posted by {this.state.author} at {this.state.date}
+          </p>
           <NavLink to={`/feed/post/${this.state.id}`}>
             <h1>{this.state.title}</h1>
           </NavLink>

@@ -1,0 +1,8 @@
+.posts-container {
+  background-color: #dae0e6;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+}

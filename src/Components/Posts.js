@@ -4,6 +4,8 @@ import CreatePost from './CreatePost';
 import SinglePost from './SinglePost';
 import { Route, Switch } from 'react-router-dom';
 
+import './Posts.css';
+
 class Posts extends React.Component {
   state = {
     posts: []
@@ -76,7 +78,7 @@ class Posts extends React.Component {
           _id: resData.post._id,
           title: resData.post.title,
           content: resData.post.content,
-          creator: resData.post.author,
+          author: resData.post.author,
           createdAt: resData.post.createdAt,
           category: resData.post.category
         };
@@ -111,7 +113,7 @@ class Posts extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="posts-container">
         <Switch>
           <Route exact path="/feed/posts">
             {this.state.posts.map(post => {
@@ -130,7 +132,7 @@ class Posts extends React.Component {
                 <Post
                   title={title}
                   content={content}
-                  author={author}
+                  author={author.name}
                   createdAt={createdAt}
                   id={_id}
                   key={_id}

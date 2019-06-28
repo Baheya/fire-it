@@ -4,6 +4,8 @@ import FilePicker from './FilePicker';
 import Button from './Button';
 import Dropdown from './Dropdown';
 
+import { Redirect } from 'react-router-dom';
+
 const POST_FORM = {
   title: {
     value: ''
@@ -21,7 +23,8 @@ const POST_FORM = {
 
 class CreatePost extends React.Component {
   state = {
-    postForm: POST_FORM
+    postForm: POST_FORM,
+    redirect: false
   };
   postInputChangeHandler = (input, value, files) => {
     // if (files) {
@@ -68,12 +71,16 @@ class CreatePost extends React.Component {
     console.log(post);
     this.props.createNewPost(post);
     this.setState({
-      postForm: POST_FORM
+      postForm: POST_FORM,
+      redirect: true
       // formIsValid: false,
       // imagePreview: null
     });
   };
   render() {
+    if (this.state.redirect === true) {
+      return <Redirect to="/feed/posts" />;
+    }
     return (
       <div>
         <form>

@@ -53,6 +53,7 @@ class Posts extends React.Component {
     formData.append('title', postData.title);
     formData.append('content', postData.content);
     formData.append('image', postData.image);
+    formData.append('category', postData.category);
     let url = 'http://localhost:8080/feed/create-post';
     let method = 'POST';
     //   if (this.state.editPost) {
@@ -76,7 +77,8 @@ class Posts extends React.Component {
           title: resData.post.title,
           content: resData.post.content,
           creator: resData.post.author,
-          createdAt: resData.post.createdAt
+          createdAt: resData.post.createdAt,
+          category: resData.post.category
         };
         this.setState(prevState => {
           let updatedPosts = [...prevState.posts, post];
@@ -121,7 +123,8 @@ class Posts extends React.Component {
                 _id,
                 imageUrl,
                 comments,
-                votes
+                votes,
+                category
               } = post;
               return (
                 <Post
@@ -134,6 +137,7 @@ class Posts extends React.Component {
                   image={imageUrl}
                   comments={comments}
                   votes={votes}
+                  category={category}
                 />
               );
             })}

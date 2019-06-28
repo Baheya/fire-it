@@ -2,6 +2,7 @@ import React from 'react';
 import Input from './Input';
 import FilePicker from './FilePicker';
 import Button from './Button';
+import Dropdown from './Dropdown';
 
 const POST_FORM = {
   title: {
@@ -11,6 +12,9 @@ const POST_FORM = {
     value: ''
   },
   content: {
+    value: ''
+  },
+  category: {
     value: ''
   }
 };
@@ -29,6 +33,7 @@ class CreatePost extends React.Component {
     //       this.setState({ imagePreview: null });
     //     });
     // }
+    console.log(input, value, files);
     this.setState(prevState => {
       //   let isValid = true;
       //   for (const validator of prevState.postForm[input].validators) {
@@ -57,8 +62,10 @@ class CreatePost extends React.Component {
     const post = {
       title: this.state.postForm.title.value,
       image: this.state.postForm.image.value,
-      content: this.state.postForm.content.value
+      content: this.state.postForm.content.value,
+      category: this.state.postForm.category.value
     };
+    console.log(post);
     this.props.createNewPost(post);
     this.setState({
       postForm: POST_FORM
@@ -94,6 +101,11 @@ class CreatePost extends React.Component {
             control="textarea"
             value={this.state.postForm['content'].value}
             onChange={this.postInputChangeHandler}
+          />
+          <Dropdown
+            id="category"
+            onChange={this.postInputChangeHandler}
+            value={this.state.postForm['category'].value}
           />
           <Button
             onClick={this.acceptPostChangeHandler}

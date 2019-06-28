@@ -5,7 +5,7 @@ class Post extends React.Component {
   render() {
     return (
       <div>
-        <a href="#">r/category</a>
+        <a href="#">{`r/${this.props.category}`}</a>
         <span>
           Posted by {this.props.name} at {this.props.createdAt}
         </span>

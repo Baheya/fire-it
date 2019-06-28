@@ -17,7 +17,8 @@ class SinglePost extends React.Component {
     id: '',
     comment: '',
     comments: [],
-    votes: 0
+    votes: 0,
+    category: ''
   };
 
   componentDidMount() {
@@ -55,7 +56,8 @@ class SinglePost extends React.Component {
           content: res.data.post.content,
           id: res.data.post._id,
           comments: res.data.post.comments,
-          votes: res.data.post.votes
+          votes: res.data.post.votes,
+          category: res.data.post.category
         }));
       })
       // .then(res => {
@@ -169,7 +171,7 @@ class SinglePost extends React.Component {
     return (
       <div>
         <div>
-          <a href="#">r/category</a>
+          <a href="#">{`r/${this.state.category}`}</a>
           <span>
             Posted by {this.state.author} at {this.state.createdAt}
           </span>

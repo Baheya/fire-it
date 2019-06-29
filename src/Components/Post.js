@@ -8,7 +8,7 @@ class Post extends React.Component {
     return (
       <div className="post-container">
         <div className="voting-sidebar">
-          <p>{this.props.votes} Votes</p>
+          <p>{this.props.votes}</p>
         </div>
         <div className="post-content">
           <div className="post-header">

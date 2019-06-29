@@ -184,7 +184,7 @@ class SinglePost extends React.Component {
       <div className="post-container">
         <div className="voting-sidebar">
           <Button onClick={this.saveVote} label="+" value="up" />
-          <p>{this.state.votes} Votes</p>
+          <p>{this.state.votes}</p>
           <Button onClick={this.saveVote} label="-" value="down" />
         </div>
         <div className="post-content">

@@ -81,7 +81,9 @@ class Posts extends React.Component {
           content: resData.post.content,
           author: resData.post.author,
           createdAt: resData.post.createdAt,
-          category: resData.post.category
+          category: resData.post.category,
+          votes: resData.post.votes,
+          comments: resData.post.comments
         };
         this.setState(prevState => {
           let updatedPosts = [...prevState.posts, post];

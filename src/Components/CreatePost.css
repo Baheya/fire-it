@@ -1,6 +1,8 @@
 .create-post-content {
   height: 650px;
   width: 850px;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
 }
 
 .create-post-header {
@@ -37,10 +39,103 @@ h1 {
   justify-self: center;
 }
 
+.divider {
+  max-width: 800px;
+  margin-bottom: 15px;
+}
+
 .form {
   display: grid;
   width: 800px;
   height: 450px;
   background-color: white;
   border-radius: 4px;
+}
+
+.form form {
+  border-radius: 4px;
+}
+
+.form-content-header {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 55px;
+  border: 1px #edeff1 solid;
+  border-radius: 4px;
+}
+
+.post-tab {
+  padding: 10px 24px;
+  align-self: center;
+  font-size: 14px;
+  border-right: 1px #edeff1 solid;
+}
+
+.post-tab a,
+.post-tab i {
+  color: #0079d2;
+  padding: 2px;
+}
+
+.image-video-tab {
+  padding: 10px 24px;
+  align-self: center;
+  font-size: 14px;
+  border-right: 1px #edeff1 solid;
+}
+
+.image-video-tab a,
+.image-video-tab i {
+  color: #888a8c;
+  padding: 2px;
+}
+
+.link-tab {
+  padding: 10px 24px;
+  align-self: center;
+  font-size: 14px;
+}
+
+.link-tab a,
+.link-tab i {
+  color: #888a8c;
+  padding: 2px;
+}
+
+.form-content-container {
+  display: grid;
+  margin: 16px;
+}
+
+.wrapper {
+  grid-row-start: 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  margin-top: 30px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 70% 1fr 1fr;
+  grid-template-rows: 1fr;
+  padding: 10px;
+  margin-top: 60px;
+}
+
+.create-draft {
+  border: 1px #0079d2 solid;
+  border-radius: 4px;
+  font-size: 10px;
+  color: #0079d2;
+  text-align: center;
+  line-height: 24px;
+  font-weight: 700px;
+  width: 86px;
+  height: 24px;
+  padding: 3px 16px;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  justify-self: center;
 }

@@ -189,6 +189,7 @@ class SinglePost extends React.Component {
           id="content"
           label="Add Comment here:"
           type="textarea"
+          comment={true}
           value={this.state.comment}
           control="textarea"
           onChange={this.commentChangeHandler}

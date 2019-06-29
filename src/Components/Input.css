@@ -1,0 +1,41 @@
+.input-container input {
+  width: 750px;
+  height: 25px;
+  border-radius: 4px;
+  padding: 5px;
+  border: 1px solid #edeff1;
+}
+
+.textarea-container textarea {
+  width: 750px;
+  height: 100px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  padding: 5px;
+  border: 1px solid #edeff1;
+}
+
+.textarea-header {
+  background-color: #f6f7f8;
+  display: grid;
+  grid-template-columns: repeat(15, 28px) 1fr 1fr;
+  width: 750px;
+  height: 35px;
+  margin-top: 10px;
+  padding-right: 14px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.textarea-header i {
+  color: #888a8c;
+  align-self: center;
+}
+
+.textarea-header a {
+  grid-column-start: 17;
+  font-size: 10px;
+  color: #0079d2;
+  justify-self: end;
+  padding-right: 2px;
+}

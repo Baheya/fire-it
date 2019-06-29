@@ -1,0 +1,17 @@
+.button-wrapper {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  justify-self: center;
+}
+.create-post {
+  border: 1px #0079d2 solid;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #0079d2;
+  color: #9ecaed;
+  text-align: center;
+  font-weight: 700px;
+  width: 80px;
+  height: 30px;
+  padding: 5px 16px;
+}

@@ -1,10 +1,12 @@
 import React from 'react';
 
+import './Dropdown.css';
+
 class Dropdown extends React.Component {
   render() {
     return (
-      <div>
-        <label htmlFor="category">Category:</label>
+      <div className="dropdown">
+        {/* <label htmlFor="category">Category:</label> */}
         <select
           id="category"
           onChange={e => this.props.onChange(this.props.id, e.target.value)}

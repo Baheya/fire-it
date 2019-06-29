@@ -1,8 +1,10 @@
 import React from 'react';
 
+import './FilePicker.css';
+
 const FilePicker = props => (
-  <div>
-    <label htmlFor={props.id}>{props.label}</label>
+  <div className="filepicker">
+    {/* <label htmlFor={props.id}>{props.label}</label> */}
     <input
       type="file"
       id={props.id}

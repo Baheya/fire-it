@@ -11,7 +11,9 @@ class NavBar extends React.Component {
       <div className="navbar">
         <div className="navbar-contents">
           <div className="logo">
-            <img src={logo} className="logo" />
+            <a href="/feed/posts">
+              <img src={logo} className="logo" />
+            </a>
           </div>
           <div className="dropdown-emulator">
             <i className="fas fa-fire-alt blue-fire" />

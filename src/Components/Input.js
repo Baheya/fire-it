@@ -15,11 +15,19 @@ class Input extends React.Component {
         {/* {this.props.label && (
           <label htmlFor={this.props.id}>{this.props.label}</label>
         )} */}
-        {this.props.control === 'input' && (
+        {this.props.control === 'input' && !this.props.comment && (
           <input
             id={this.props.id}
             type={this.props.type}
-            name={this.props.name}
+            value={this.props.value}
+            placeholder={this.props.placeholder}
+            onChange={e => this.props.onChange(this.props.id, e.target.value)}
+          />
+        )}
+        {this.props.control === 'input' && this.props.comment && (
+          <input
+            id={this.props.id}
+            type={this.props.type}
             value={this.props.value}
             placeholder={this.props.placeholder}
             onChange={e => this.props.onChange(this.props.id, e.target.value)}

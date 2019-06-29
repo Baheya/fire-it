@@ -20,7 +20,8 @@ class SinglePost extends React.Component {
     comment: '',
     comments: [],
     votes: 0,
-    category: ''
+    category: '',
+    commentAuthor: ''
   };
 
   componentDidMount() {
@@ -85,13 +86,21 @@ class SinglePost extends React.Component {
     }));
   };
 
-  createComment = commentData => {
+  nameChangeHandler = (input, value) => {
+    this.setState(() => ({
+      commentAuthor: value
+    }));
+  };
+
+  createComment = (commentData, authorData) => {
     const content = commentData.comment;
+    const authorName = authorData.commentAuthor;
     const postId = this.props.match.params.postId;
     axios
       .post('http://localhost:8080/feed/post/' + postId, {
         content: content,
-        postId: postId
+        postId: postId,
+        author: authorName
       })
       .then(res => {
         console.log(res);
@@ -99,11 +108,13 @@ class SinglePost extends React.Component {
         console.log(updatedComment);
         if (this.state.comments.length > 0) {
           this.setState(prevState => ({
-            comments: [...prevState.comments, updatedComment]
+            comments: [...prevState.comments, updatedComment],
+            commentAuthor: authorName
           }));
         } else {
           this.setState(() => ({
-            comments: [updatedComment]
+            comments: [updatedComment],
+            commentAuthor: authorName
           }));
         }
       })
@@ -117,10 +128,14 @@ class SinglePost extends React.Component {
     const comment = {
       comment: this.state.comment
     };
+    const commentAuthor = {
+      commentAuthor: this.state.commentAuthor
+    };
     console.log(comment);
-    this.createComment(comment);
+    this.createComment(comment, commentAuthor);
     this.setState({
-      comment: ''
+      comment: '',
+      commentAuthor: ''
     });
   };
 
@@ -175,7 +190,7 @@ class SinglePost extends React.Component {
         <div className="post-content">
           <div className="post-header">
             <NavLink to={`/feed/posts/r/${this.state.category}`}>
-              <a href="#" className="category">{`r/${this.state.category}`}</a>
+              <p className="category">{`r/${this.state.category}`}</p>
             </NavLink>
             <p className="author">
               Posted by {this.state.author} at
@@ -206,6 +221,16 @@ class SinglePost extends React.Component {
             <i class="fas fa-ellipsis-h" />
           </div>
           <div className="content-section">
+            <Input
+              id="comment-author"
+              label="Name"
+              type="text"
+              comment={true}
+              placeholder={'Your name here'}
+              value={this.state.commentAuthor}
+              control="input"
+              onChange={this.nameChangeHandler}
+            />
             <Input
               id="content"
               label="Add Comment here:"

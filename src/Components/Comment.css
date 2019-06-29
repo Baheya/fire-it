@@ -1,0 +1,22 @@
+.comment {
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+.comment p {
+  text-align: left;
+  margin: 4px;
+}
+
+span {
+  color: #0079d2;
+}
+
+.comment-options {
+  display: grid;
+  grid-template-columns: 30px 30px 30px 1fr;
+}
+
+.comment-options a {
+  font-size: 8px;
+}

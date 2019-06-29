@@ -15,3 +15,16 @@
   height: 30px;
   padding: 5px 16px;
 }
+
+.add-comment {
+  border: 1px #0079d2 solid;
+  border-radius: 4px;
+  font-size: 12px;
+  background-color: #0079d2;
+  color: #9ecaed;
+  text-align: center;
+  font-weight: 700px;
+  width: 100px;
+  height: 50px;
+  padding: 5px 16px;
+}

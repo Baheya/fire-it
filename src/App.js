@@ -5,14 +5,12 @@ import './App.css';
 
 import NavBar from './Components/NavBar';
 import Posts from './Components/Posts';
-import CreatePostContainer from './Components/CreatePostContainer';
 
 const App = () => {
   return (
     <div className="App">
       <NavBar />
       <Posts />
-      <CreatePostContainer />
     </div>
   );
 };

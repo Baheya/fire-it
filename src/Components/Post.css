@@ -3,7 +3,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   align-self: center;
-  max-width: 650px;
+  width: 650px;
   border-radius: 4px;
   background-color: white;
   margin: 10px;

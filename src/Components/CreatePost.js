@@ -4,6 +4,8 @@ import FilePicker from './FilePicker';
 import Button from './Button';
 import Dropdown from './Dropdown';
 
+import './CreatePost.css';
+
 import { Redirect } from 'react-router-dom';
 
 const POST_FORM = {
@@ -82,43 +84,51 @@ class CreatePost extends React.Component {
       return <Redirect to="/feed/posts" />;
     }
     return (
-      <div>
-        <form>
-          <Input
-            id="title"
-            label="Title"
-            type="text"
-            name="title"
-            control="input"
-            value={this.state.postForm['title'].value}
-            onChange={this.postInputChangeHandler}
-          />
-          <FilePicker
-            id="image"
-            label="Image"
-            control="input"
-            onChange={this.postInputChangeHandler}
-          />
-          <Input
-            id="content"
-            label="Content"
-            type="textarea"
-            rows="5"
-            name="content"
-            control="textarea"
-            value={this.state.postForm['content'].value}
-            onChange={this.postInputChangeHandler}
-          />
-          <Dropdown
-            id="category"
-            onChange={this.postInputChangeHandler}
-            value={this.state.postForm['category'].value}
-          />
-          <Button
-            onClick={this.acceptPostChangeHandler}
-            label={'Create Post'}
-          />
-        </form>
+      <div className="create-post-content">
+        <div className="create-post-header">
+          <a href="#" className="drafts">
+            DRAFTS
+          </a>
+          <h1>Create a Post</h1>
+        </div>
+        <div className="form">
+          <form>
+            <Input
+              id="title"
+              label="Title"
+              type="text"
+              name="title"
+              control="input"
+              value={this.state.postForm['title'].value}
+              onChange={this.postInputChangeHandler}
+            />
+            <FilePicker
+              id="image"
+              label="Image"
+              control="input"
+              onChange={this.postInputChangeHandler}
+            />
+            <Input
+              id="content"
+              label="Content"
+              type="textarea"
+              rows="5"
+              name="content"
+              control="textarea"
+              value={this.state.postForm['content'].value}
+              onChange={this.postInputChangeHandler}
+            />
+            <Dropdown
+              id="category"
+              onChange={this.postInputChangeHandler}
+              value={this.state.postForm['category'].value}
+            />
+            <Button
+              onClick={this.acceptPostChangeHandler}
+              label={'Create Post'}
+            />
+          </form>
+        </div>
       </div>
     );
   }

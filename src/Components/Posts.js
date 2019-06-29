@@ -2,6 +2,7 @@ import React from 'react';
 import Post from './Post';
 import CreatePost from './CreatePost';
 import SinglePost from './SinglePost';
+import CreatePostContainer from './CreatePostContainer';
 import { Route, Switch } from 'react-router-dom';
 
 import './Posts.css';
@@ -113,49 +114,52 @@ class Posts extends React.Component {
 
   render() {
     return (
-      <div className="posts-container">
-        <Switch>
-          <Route exact path="/feed/posts">
-            {this.state.posts.map(post => {
-              const {
-                title,
-                content,
-                author,
-                createdAt,
-                _id,
-                imageUrl,
-                comments,
-                votes,
-                category
-              } = post;
-              return (
-                <Post
-                  title={title}
-                  content={content}
-                  author={author.name}
-                  createdAt={createdAt}
-                  id={_id}
-                  key={_id}
-                  image={imageUrl}
-                  comments={comments}
-                  votes={votes}
-                  category={category}
-                />
-              );
-            })}
-          </Route>
-        </Switch>
-        <Switch>
-          <Route exact path="/feed/create-post">
-            <CreatePost createNewPost={this.finishEditHandler} />
-          </Route>
-        </Switch>
-        <Switch>
-          <Route
-            path="/feed/post/:postId"
-            render={props => <SinglePost {...props} />}
-          />
-        </Switch>
+      <div className="body-container">
+        <div className="posts-container">
+          <Switch>
+            <Route exact path="/feed/posts">
+              {this.state.posts.map(post => {
+                const {
+                  title,
+                  content,
+                  author,
+                  createdAt,
+                  _id,
+                  imageUrl,
+                  comments,
+                  votes,
+                  category
+                } = post;
+                return (
+                  <Post
+                    title={title}
+                    content={content}
+                    author={author.name}
+                    createdAt={createdAt}
+                    id={_id}
+                    key={_id}
+                    image={imageUrl}
+                    comments={comments}
+                    votes={votes}
+                    category={category}
+                  />
+                );
+              })}
+            </Route>
+          </Switch>
+          <Switch>
+            <Route exact path="/feed/create-post">
+              <CreatePost createNewPost={this.finishEditHandler} />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route
+              path="/feed/post/:postId"
+              render={props => <SinglePost {...props} />}
+            />
+          </Switch>
+        </div>
+        <CreatePostContainer />
       </div>
     );
   }

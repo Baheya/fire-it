@@ -1,8 +1,18 @@
+.body-container {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr;
+  background-color: #dae0e6;
+  height: auto;
+  padding: 20px;
+}
+
 .posts-container {
   background-color: #dae0e6;
-  padding-top: 30px;
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
+  grid-column-start: 2;
+  grid-column-end: 3;
 }

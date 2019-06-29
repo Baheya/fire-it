@@ -7,6 +7,8 @@ import CreateComment from './CreateComment';
 import Input from './Input';
 import Button from './Button';
 
+import './SinglePost.css';
+
 class SinglePost extends React.Component {
   state = {
     title: '',
@@ -164,34 +166,74 @@ class SinglePost extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <a href="#">{`r/${this.state.category}`}</a>
-          <p>
-            Posted by {this.state.author} at {this.state.date}
-          </p>
-          <NavLink to={`/feed/post/${this.state.id}`}>
-            <h1>{this.state.title}</h1>
-          </NavLink>
-          <img src={this.state.image} />
-          <p>{this.state.content}</p>
-          <p>{this.state.comments.length} Comments</p>
+      <div className="post-container">
+        <div className="voting-sidebar">
           <Button onClick={this.saveVote} label="+" value="up" />
           <p>{this.state.votes} Votes</p>
           <Button onClick={this.saveVote} label="-" value="down" />
         </div>
-        <Input
-          id="content"
-          label="Add Comment here:"
-          type="textarea"
-          comment={true}
-          value={this.state.comment}
-          control="textarea"
-          onChange={this.commentChangeHandler}
-        />
-        <CreateComment addComment={this.addComment} />
-        <Comments comments={this.state.comments} />
+        <div className="post-content">
+          <div className="post-header">
+            <NavLink to={`/feed/posts/r/${this.state.category}`}>
+              <a href="#" className="category">{`r/${this.state.category}`}</a>
+            </NavLink>
+            <p className="author">
+              Posted by {this.state.author} at
+              {this.state.date}
+            </p>
+            <a href="#" className="join">
+              + JOIN
+            </a>
+          </div>
+          <NavLink to={`/feed/post/${this.state.id}`}>
+            <h1>{this.state.title}</h1>
+          </NavLink>
+          <div className="post-img">
+            <img src={this.state.image} />
+          </div>
+          <p>{this.state.content}</p>
+          <div className="post-options">
+            <i class="fas fa-comment" />
+            <p>
+              {!this.state.comments
+                ? 0
+                : this.state.comments.length === 1
+                ? `${this.state.comments.length} Comment`
+                : `${this.state.comments.length} Comments`}
+            </p>
+            <i class="fas fa-share" />
+            <p>Share</p>
+            <i class="fas fa-ellipsis-h" />
+          </div>
+          <div className="content-section">
+            <Input
+              id="content"
+              label="Add Comment here:"
+              type="textarea"
+              comment={true}
+              value={this.state.comment}
+              control="textarea"
+              onChange={this.commentChangeHandler}
+            />
+            <CreateComment addComment={this.addComment} />
+            <Comments comments={this.state.comments} />
+          </div>
+        </div>
       </div>
+      // </div>
+      // <div>
+      //   <div>
+      //     <a href="#">{`r/${this.state.category}`}</a>
+      //     <p>
+      //       Posted by {this.state.author} at {this.state.date}
+      //     </p>
+      //     <NavLink to={`/feed/post/${this.state.id}`}>
+      //       <h1>{this.state.title}</h1>
+      //     </NavLink>
+
+      //     <p>{this.state.content}</p>
+
+      // </div>
     );
   }
 }

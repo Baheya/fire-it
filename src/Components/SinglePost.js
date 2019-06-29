@@ -96,14 +96,9 @@ class SinglePost extends React.Component {
         let updatedComment = res.data.comment;
         console.log(updatedComment);
         if (this.state.comments.length > 0) {
-          this.setState(
-            prevState => (
-              {
-                comments: [...prevState.comments, updatedComment]
-              },
-              () => console.log(this.state.comments)
-            )
-          );
+          this.setState(prevState => ({
+            comments: [...prevState.comments, updatedComment]
+          }));
         } else {
           this.setState(() => ({
             comments: [updatedComment]

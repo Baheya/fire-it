@@ -3,6 +3,7 @@ import Post from './Post';
 import CreatePost from './CreatePost';
 import SinglePost from './SinglePost';
 import CreatePostContainer from './CreatePostContainer';
+import Category from './Category';
 import { Route, Switch } from 'react-router-dom';
 
 import './Posts.css';
@@ -148,6 +149,13 @@ class Posts extends React.Component {
                 );
               })}
             </Route>
+          </Switch>
+          <Switch>
+            <Route
+              exact
+              path="/feed/posts/r/:category"
+              render={props => <Category {...props} />}
+            />
           </Switch>
           <Switch>
             <Route exact path="/feed/create-post">

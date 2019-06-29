@@ -2,8 +2,8 @@
   display: grid;
   grid-template-columns: 200px 1fr 1fr;
   background-color: #dae0e6;
-  height: auto;
-  padding: 20px;
+  padding: 30px;
+  min-height: 100vh;
 }
 
 .posts-container {
@@ -13,6 +13,7 @@
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
+  align-self: flex-start;
   grid-column-start: 2;
   grid-column-end: 3;
 }

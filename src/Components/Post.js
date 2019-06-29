@@ -12,7 +12,9 @@ class Post extends React.Component {
         </div>
         <div className="post-content">
           <div className="post-header">
-            <a href="#" className="category">{`r/${this.props.category}`}</a>
+            <NavLink to={`/feed/posts/r/${this.props.category}`}>
+              <a href="#" className="category">{`r/${this.props.category}`}</a>
+            </NavLink>
             <p className="author">
               Posted by {this.props.author} at
               {new Date(this.props.createdAt).toLocaleDateString()}

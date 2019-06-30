@@ -4,33 +4,22 @@ import CreatePost from './CreatePost';
 import SinglePost from './SinglePost';
 import CreatePostContainer from './CreatePostContainer';
 import Category from './Category';
+import Spinner from './Spinner';
 import { Route, Switch } from 'react-router-dom';
 
 import './Posts.css';
 
 class Posts extends React.Component {
   state = {
-    posts: []
-    // postsLoading: true,
+    posts: [],
+    postsLoading: true
   };
 
   componentDidMount() {
     this.loadPosts();
   }
 
-  loadPosts = direction => {
-    // if (direction) {
-    //   this.setState({ postsLoading: true, posts: [] });
-    // }
-    // let page = this.state.postPage;
-    // if (direction === "next") {
-    //   page++;
-    //   this.setState({ postPage: page });
-    // }
-    // if (direction === "previous") {
-    //   page--;
-    //   this.setState({ postPage: page });
-    // }
+  loadPosts = () => {
     fetch('http://localhost:8080/feed/posts')
       .then(res => {
         if (res.status !== 200) {
@@ -41,18 +30,14 @@ class Posts extends React.Component {
       .then(resData => {
         console.log(resData);
         this.setState({
-          posts: resData.posts
-          //   totalPosts: resData.totalItems,
-          //   postsLoading: false
+          posts: resData.posts,
+          postsLoading: false
         });
       })
       .catch(this.catchError);
   };
 
   finishEditHandler = postData => {
-    //   this.setState({
-    //     editLoading: true
-    //   });
     const formData = new FormData();
     formData.append('title', postData.title);
     formData.append('content', postData.content);
@@ -88,30 +73,13 @@ class Posts extends React.Component {
         };
         this.setState(prevState => {
           let updatedPosts = [...prevState.posts, post];
-          //   if (prevState.editPost) {
-          //     const postIndex = prevState.posts.findIndex(
-          //       p => p._id === prevState.editPost._id
-          //     );
-          //     updatedPosts[postIndex] = post;
-          //   } else if (prevState.posts.length < 2) {
-          //     updatedPosts = prevState.posts.concat(post);
-          //   }
           return {
             posts: updatedPosts
-            // isEditing: false,
-            // editPost: null,
-            // editLoading: false
           };
         });
       })
       .catch(err => {
         console.log(err);
-        // this.setState({
-        //   isEditing: false,
-        //   editPost: null,
-        //   editLoading: false,
-        //   error: err
-        // });
       });
   };
 
@@ -119,6 +87,7 @@ class Posts extends React.Component {
     return (
       <div className="body-container">
         <div className="posts-container">
+          {this.state.postsLoading && <Spinner />}
           <Switch>
             <Route exact path="/feed/posts">
               {this.state.posts.map(post => {

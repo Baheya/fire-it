@@ -232,7 +232,7 @@ class SinglePost extends React.Component {
               onChange={this.nameChangeHandler}
             />
             <Input
-              id="content"
+              id="comment-content"
               label="Add Comment here:"
               type="textarea"
               comment={true}
